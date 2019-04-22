@@ -26,4 +26,11 @@ return array(
 		),
 
 	),
+
+    'commandMap'=>array(
+        'migrate'=>array(
+            'class'=>'system.cli.commands.MigrateCommand',
+            'migrationTable'=>'migration',
+        ),
+    ),
 );
