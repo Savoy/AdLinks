@@ -80,11 +80,21 @@ class Redirect extends \CActiveRecord
 		);
 	}
 
+	/**
+	 * Возвращает строковое представление адреса
+	 *
+	 * @return string
+	 */
 	public function getIp()
     {
         return long2ip($this->ip_long);
     }
 
+	/**
+	 * Преобразовывает строковое представление адреса в числовое
+	 *
+	 * @param string $value
+	 */
     public function setIp($value)
     {
         $this->ip_long = ip2long($value);
@@ -123,14 +133,14 @@ class Redirect extends \CActiveRecord
                 'attributes' => [
                     'link_id' => 'link.code',
                     'ip_long',
-                    'user_agent',
                     'utm_source',
                     'utm_medium',
                     'utm_campaign',
                     'utm_content',
                     'utm_term',
                     'created_at',
-                ]
+                ],
+	            'defaultOrder' => ['created_at' => \CSort::SORT_DESC],
             ],
 		));
 	}

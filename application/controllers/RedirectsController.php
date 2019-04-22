@@ -31,14 +31,12 @@ class RedirectsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		//$dataProvider=new \CActiveDataProvider('application\models\Redirect');
         $model = new Redirect();
         if (isset($_REQUEST['application_models_Redirect'])) {
             $model->attributes = $_REQUEST['application_models_Redirect'];
         }
 
         $this->render('index',array(
-			//'dataProvider'=>$dataProvider,
             'model' => $model,
 		));
 	}

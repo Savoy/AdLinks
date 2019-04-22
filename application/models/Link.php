@@ -27,6 +27,9 @@ namespace application\models;
  */
 class Link extends \CActiveRecord
 {
+	/**
+	 * Значения для поля status
+	 */
     const STATUS_ACTIVE = 1;
     const STATUS_DELETED = 2;
 
@@ -107,6 +110,11 @@ class Link extends \CActiveRecord
         ];
     }
 
+	/**
+	 * Возвращает массив не пустых utm меток со значениями
+	 *
+	 * @return array
+	 */
     public function getUtmValues()
     {
         $values = [];
@@ -172,6 +180,9 @@ class Link extends \CActiveRecord
 		));
 	}
 
+	/**
+	 * @inheritdoc
+	 */
     protected function beforeSave()
     {
         if (parent::beforeSave()) {
@@ -185,6 +196,12 @@ class Link extends \CActiveRecord
         return false;
     }
 
+	/**
+	 * Возвращает код для ссылки заданной длинны
+	 *
+	 * @param int $max
+	 * @return string
+	 */
     protected function generateCode($max = 8)
     {
         $chars = "qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP";

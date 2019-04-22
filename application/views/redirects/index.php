@@ -27,6 +27,7 @@ $this->breadcrumbs=array(
                 'utm_content',
                 'utm_term',
                 ['name' => 'created_at', 'filter' => false],
+	            ['class' => '\TbButtonColumn', 'template' => '{delete}', 'htmlOptions' => ['class' => 'text-center']],
             ],
         )); ?>
     </div>

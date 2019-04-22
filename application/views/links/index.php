@@ -36,9 +36,10 @@ $this->breadcrumbs=array(
                 ['name' => 'updated_at', 'filter' => false],
                 ['class'=>'\TbButtonColumn', 'buttons' => [
                     'view' => [
+                   		'label' => 'Переходы',
                         'url' => function($model) { return $this->createUrl('redirects/index', ['application_models_Redirect[link_id]' => $model->code]); }
                     ],
-                ]],
+                ], 'htmlOptions' => ['class' => 'text-center']],
             ],
         )); ?>
     </div>

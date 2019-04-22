@@ -47,7 +47,7 @@ class LinksController extends Controller
 		if (isset($_POST['application_models_Link'])) {
 			$model->attributes=$_POST['application_models_Link'];
 			if ($model->save()) {
-                Yii::app()->user->setFlash('success', 'Измменения успешно сохранены.');
+                Yii::app()->user->setFlash('success', 'Изменения успешно сохранены.');
 
 				$this->redirect(array('index'));
 			}
@@ -84,14 +84,12 @@ class LinksController extends Controller
 	 */
 	public function actionIndex()
 	{
-		//$dataProvider=new \CActiveDataProvider('application\models\Link');
         $model = new Link();
         if (isset($_REQUEST['application_models_Link'])) {
             $model->attributes = $_REQUEST['application_models_Link'];
         }
 
 		$this->render('index',array(
-			//'dataProvider'=>$dataProvider,
             'model' => $model,
 		));
 	}
