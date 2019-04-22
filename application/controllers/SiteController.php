@@ -1,4 +1,10 @@
 <?php
+namespace application\controllers;
+
+use Yii;
+use application\components\Controller;
+use application\models\ContactForm;
+use application\models\LoginForm;
 
 class SiteController extends Controller
 {
@@ -10,13 +16,13 @@ class SiteController extends Controller
 		return array(
 			// captcha action renders the CAPTCHA image displayed on the contact page
 			'captcha'=>array(
-				'class'=>'CCaptchaAction',
+				'class'=>'\CCaptchaAction',
 				'backColor'=>0xFFFFFF,
 			),
 			// page action renders "static" pages stored under 'protected/views/site/pages'
 			// They can be accessed via: index.php?r=site/page&view=FileName
 			'page'=>array(
-				'class'=>'CViewAction',
+				'class'=>'\CViewAction',
 			),
 		);
 	}
@@ -82,7 +88,7 @@ class SiteController extends Controller
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{
-			echo CActiveForm::validate($model);
+			echo \CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 
