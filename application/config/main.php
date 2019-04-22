@@ -13,6 +13,8 @@ return array(
 
 	'controllerMap' => array(
 		'site' => '\application\controllers\SiteController',
+		'links' => '\application\controllers\LinksController',
+		'redirects' => '\application\controllers\RedirectsController',
 	),
 
 	// preloading 'log' component
@@ -25,9 +27,6 @@ return array(
 
 	// autoloading model and component classes
 	'import'=>array(
-		'application.models.*',
-		'application.components.*',
-
 		'yiistrap.behaviors.*',
 		'yiistrap.components.*',
 		'yiistrap.form.*',
@@ -39,7 +38,7 @@ return array(
 		// uncomment the following to enable the Gii tool
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
-			'generatorPaths' => array('vendor.crisu83.yiistrap.gii'),
+			'generatorPaths' => array('yiistrap.gii'),
 			'password'=>'12345',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
@@ -58,17 +57,18 @@ return array(
 			'class' => '\TbApi',
 		),
 
-		// uncomment the following to enable URLs in path-format
-		/*
 		'urlManager'=>array(
 			'urlFormat'=>'path',
+			'showScriptName'=>false,
 			'rules'=>array(
+			    '' => 'site/index',
+                '<code:\w{8}>' => 'site/open',
+                '<controller:\w+>'=>'<controller>/index',
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		*/
 
 		// database settings are configured in database.php
 		'db'=>require(dirname(__FILE__).'/database.php'),

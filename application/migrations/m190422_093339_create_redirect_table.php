@@ -8,7 +8,7 @@ class m190422_093339_create_redirect_table extends CDbMigration
 	    $this->createTable($tableName, [
 	        'id' => 'pk',
             'link_id' => 'int(11) NOT NULL',
-            'ip_int' => 'int(10) UNSIGNED NOT NULL',
+            'ip_long' => 'int(10) UNSIGNED NOT NULL',
             'user_agent' => 'text',
             'utm_source' => 'varchar(255) DEFAULT NULL',
             'utm_medium' => 'varchar(255) DEFAULT NULL',

@@ -31,13 +31,19 @@
 				'items' => [
 					['label' => 'Главная', 'url' => ['site/index']],
 					['label' => 'Ссылки', 'url' => ['links/index']],
-					['label' => 'Статистика', 'url' => ['statistics/index']],
-				]
-			]
-		]
+					['label' => 'Переходы', 'url' => ['redirects/index']],
+				],
+			],
+		],
 	]); ?>
 
 	<div class="container">
+        <?php $this->widget('\TbBreadcrumb', [
+            'homeLabel' => 'Главная',
+            'links' => $this->breadcrumbs,
+        ]); ?>
+        <?php $this->widget('\TbAlert'); ?>
+
 		<?= $content; ?>
 	</div>
 </div>

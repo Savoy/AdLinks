@@ -5,6 +5,8 @@ use Yii;
 use application\components\Controller;
 use application\models\ContactForm;
 use application\models\LoginForm;
+use application\models\Link;
+use application\models\Redirect;
 
 class SiteController extends Controller
 {
@@ -37,6 +39,23 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		$this->render('index');
 	}
+
+	public function actionOpen($code)
+    {
+        $link = Link::model()->findByAttributes(['code' => $code, 'status' => Link::STATUS_ACTIVE]);
+        if ($link === null)
+            throw new \CHttpException(404,'Запрашиваемая Вами страница не найдена.');
+
+        $redirect = new Redirect();
+        $redirect->attributes = $_GET;
+        $redirect->link_id = $link->id;
+        $redirect->ip = $_SERVER['REMOTE_ADDR'];
+        $redirect->user_agent = $_SERVER['HTTP_USER_AGENT'];
+        if (!$redirect->save())
+            throw new \CHttpException(500,'Не удалось обработать запрос. Повторите попытку позднее.');
+
+        $this->redirect($link->link);
+    }
 
 	/**
 	 * This is the action to handle external exceptions.
